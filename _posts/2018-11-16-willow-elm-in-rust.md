@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Bringing Elm to Rust and Webassembly?'
-date: 2018-11-14 22:14:55 +0100
+date: 2018-11-16 17:35:22 +0100
 categories: willow rust elm
 ---
 
@@ -15,7 +15,7 @@ handle state in the React ecosystem.
 
 Another language I like is Rust. On paper, Rust is completely different from
 Elm, but in using them both, I have seen some resemblance. They both have great
-type systems that makes it easier to refactor, and gives few runtime exceptions.
+type systems that makes it easier to refactor, and gives few[^1] runtime exceptions.
 They have similar support for tagged unions and pattern matching. They both
 handle errors using the sum-type `Result`. It's easy to see how they are
 inspired by a similar set of languages.
@@ -154,3 +154,5 @@ TodoMVC is manually converted from Evan's [elm-todomvc](https://github.com/evanc
 
 If you found a spelling mistake, feel free to correct it
 [here](https://github.com/sindreij/blog/blob/gh-pages/_posts/2018-11-14-willow-elm-in-rust.md)
+
+[^1]: When a colleague proofread this, he argued that in elm case it should be "practically zero". NoRedInk, with 200 000 lines of elm-code in production has had exactly [one runtime exception](https://twitter.com/rtfeldman/status/961051166783213570). In Rust's case, you can create "Runtime Exceptions" using `panic!`, however a panic should be a rarity. The difference in philosophy on how to handle errors are interesting when comparing these two languages. They are very similar, and at the same time very different.
