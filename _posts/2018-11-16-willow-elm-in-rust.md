@@ -141,7 +141,7 @@ HTML, but I later added a "real" dom-diffing algorithm.
 
 Writing this is possible without writing any javascript-code, thanks to
 the [web-sys](https://crates.io/crates/web-sys) and [js-sys](https://crates.io/crates/js-sys)
-crates, which builds on [https://crates.io/crates/wasm-bindgen](wasm-bindgen).
+crates, which builds on [wasm-bindgen](https://crates.io/crates/wasm-bindgen).
 
 All this is enough to render the TodoMVC application, but doing anything more than that will probably
 mean you will miss something. For example a function `Html<A> => Html<B>` like Elm's
