@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Bringing Elm's architecture to Rust and Webassembly?"
+title: "Bringing Elm's architecture to Rust and Webassembly"
 date: 2018-11-16 17:35:22 +0100
 categories: willow rust elm
 ---
