@@ -153,6 +153,6 @@ I have written two examples, [counter](https://github.com/sindreij/willow/blob/m
 TodoMVC is manually converted from Evan's [elm-todomvc](https://github.com/evancz/elm-todomvc).
 
 If you found a spelling mistake, feel free to correct it
-[here](https://github.com/sindreij/blog/blob/gh-pages/_posts/2018-11-14-willow-elm-in-rust.md)
+[here](https://github.com/sindreij/blog/blob/gh-pages/_posts/2018-11-16-willow-elm-in-rust.md)
 
 [^1]: When a colleague proofread this, he argued that in elm case it should be "practically zero". NoRedInk, with 200 000 lines of elm-code in production has had exactly [one runtime exception](https://twitter.com/rtfeldman/status/961051166783213570). In Rust's case, you can create "Runtime Exceptions" using `panic!`, however a panic should be a rarity. The difference in philosophy on how to handle errors are interesting when comparing these two languages. They are very similar, and at the same time very different.
