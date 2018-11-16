@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Bringing Elm to Rust and Webassembly?'
+title: "Bringing Elm's architecture to Rust and Webassembly?"
 date: 2018-11-16 17:35:22 +0100
 categories: willow rust elm
 ---
@@ -135,7 +135,7 @@ to what degree the types work out to look the same.
 ## Implementation
 
 After having formulated the idea and written up some code, I started on the implementation. The
-first iteration just rendered the Html in the DOM. I then added events and messages and needed to update
+first iteration just rendered the HTML in the DOM. I then added events and messages and needed to update
 the DOM. The first "virtual diffing" just deleted the whole DOM and recreated it with the new
 HTML, but I later added a "real" dom-diffing algorithm.
 
