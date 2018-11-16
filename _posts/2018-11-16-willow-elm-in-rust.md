@@ -15,23 +15,23 @@ handle state in the React ecosystem.
 
 Another language I like is Rust. On paper, Rust is completely different from
 Elm, but in using them both, I have seen some resemblance. They both have great
-type systems that makes it easier to refactor, and gives few[^1] runtime exceptions.
+type systems that make it easier to refactor and gives few[^1] runtime exceptions.
 They have similar support for tagged unions and pattern matching. They both
 handle errors using the sum-type `Result`. It's easy to see how they are
 inspired by a similar set of languages.
 
 The big difference is that Elm compiles to JS and Rust compiles to machine code.
-Elm has it's main goal as being used for writing frontend to be run in the browser,
-while Rust can only be run natively, and is primarely meant be used for servers and
+The main goal for Elm is writing frontend to be run in the browser,
+while Rust can only be run natively and is primarily meant to be used for servers and
 other native code.
 
 Until recently.
 
 There is something brewing, called WebAssembly, or wasm for short. It is a
 compile target that makes it possible to run Rust (and C and C++ and lots of
-more lanuages) in the browser. Rust has had support for compiling to wasm for a
+more languages) in the browser. Rust has had support for compiling to wasm for a
 while, but in the last few months the support has become really great, the
-Rust team has created some amazing tools that makes using Rust with wasm a
+Rust team has created some amazing tools that make using Rust with wasm a
 breeze.
 
 ## The idea
@@ -76,7 +76,7 @@ main =
 We have a `Msg` which is the action type in Elm.
 Each event in Elm creates one such Message. Then we have the `update` function
 which takes in a message and a model and returns the new model. We have a
-`view` function which takes a model and returns the html to render. And at last
+`view` function which takes a model and returns the HTML to render. And at last,
 we have a `main`-function that connects everything.
 
 If we try to translate this to Rust, it will become something like:
@@ -119,8 +119,8 @@ pub fn main() -> Program<Model, Msg> {
 This is compilable Rust code, and using this project it will render and run exactly the
 same as the Elm code. You can try it [here](http://sindrejohansen.no/willow/counter/)[^2]
 
-Note how much the rust code resembles the Elm code. The `Msg` is translated from a Elm `type`
-to a Rust `enum`, but apart from having different names and syntax its exactly the same. The
+Note how much the rust code resembles the Elm code. The `Msg` is translated from an Elm `type`
+to a Rust `enum`, but apart from having different names and syntax, it is exactly the same. The
 `Model` is becoming a Rust struct. The largest change is in the `update` function. Rust has
 no built-in support for immutable structures, so instead we mutate the model.
 
@@ -137,7 +137,7 @@ to what degree the types work out to look the same.
 After having formulated the idea and written up some code, I started on the implementation. The
 first iteration just rendered the Html in the DOM. I then added events and messages and needed to update
 the DOM. The first "virtual diffing" just deleted the whole DOM and recreated it with the new
-Html, but I latter added a "real" dom-diffing algorithm.
+HTML, but I later added a "real" dom-diffing algorithm.
 
 Writing this is possible without writing any javascript-code, thanks to
 the [web-sys](https://crates.io/crates/web-sys) and [js-sys](https://crates.io/crates/js-sys)
@@ -149,7 +149,7 @@ mean you will miss something. For example a function `Html<A> => Html<B>` like E
 
 ## Conclusion
 
-All in all this is just an experiment to see how far Rust has come in doing web development.
+All in all, this is just an experiment to see how far Rust has come in doing web development.
 I think the above shows it has come really far. I hope it will inspire someone to create the
 next awesome web-framework using Rust, and that I one day can use Rust to write webapps in
 my day-job.
@@ -162,5 +162,5 @@ TodoMVC is manually converted from Evan's [elm-todomvc](https://github.com/evanc
 If you found a spelling mistake, feel free to correct it
 [here](https://github.com/sindreij/blog/blob/gh-pages/_posts/2018-11-16-willow-elm-in-rust.md)
 
-[^1]: When a colleague proofread this, he argued that in elm case it should be "practically zero". NoRedInk, with 200 000 lines of elm-code in production has had exactly [one runtime exception](https://twitter.com/rtfeldman/status/961051166783213570). In Rust's case, you can create "Runtime Exceptions" using `panic!`, however a panic should be a rarity. The difference in philosophy on how to handle errors are interesting when comparing these two languages. They are very similar, and at the same time very different.
-[^2]: The only changes in the actual implementation of this is that the update function returns a Cmd. If willow had a `sandbox` constructor the counter code using that would be exactly as this code. The various derves are needed for the Virtual Dom diffing and just for debugging.
+[^1]: When a colleague proofread this, he argued that in elm case it should be "practically zero". NoRedInk, with 200 000 lines of elm-code in production has had exactly [one runtime exception](https://twitter.com/rtfeldman/status/961051166783213570). In Rust's case, you can create "Runtime Exceptions" using `panic!`, however, a panic should be a rarity. The difference in philosophy on how to handle errors is interesting when comparing these two languages. They are very similar, and at the same time very different.
+[^2]: The only changes in the actual implementation of this is that the update function returns a Cmd. If Willow had a `sandbox` constructor the counter code using that would be exactly as this code. The various derives are needed for the Virtual Dom diffing and just for debugging.
